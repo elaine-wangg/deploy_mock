@@ -38,7 +38,7 @@ export function REPLInput(props : REPLInputProps) {
       } else if (commandString === "verbose mode") {
         setMode("verbose")
         return "mode set to verbose"
-      } else if (commandString.substring(0, 8) === ("load_file")) {
+      } else if (commandString.substring(0, 9) === ("load_file")) {
         setAction("load_file")
         return "loading file"
       } else {

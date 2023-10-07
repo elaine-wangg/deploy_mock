@@ -16,6 +16,10 @@
     overflow: scroll;    
 }
 
+.line-break {
+    white-space: pre;
+}
+
 .repl-input {        
     margin: auto;    
     height:10vh;
