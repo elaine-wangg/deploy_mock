@@ -1,6 +1,10 @@
 import '../styles/main.css';
 import { Dispatch, SetStateAction, useState} from 'react';
 import { ControlledInput } from './ControlledInput';
+import BadCSV from '../data/BadCSV';
+import BasicHeaderCSV from '../data/BasicHeaderCSV';
+import BasicNoHeaderCSV from '../data/BasicNoHeaderCSV';
+import EmptyCSV from '../data/EmptyCSV';
 
 interface REPLInputProps{
   history: string[],
@@ -10,13 +14,18 @@ interface REPLInputProps{
 // REPLInput(history: string[], setHistory: Dispatch<SetStateAction<string[]>>)
 export function REPLInput(props : REPLInputProps) {
 
-    const [commandString, setCommandString] = useState<string>('');
-    const [count, setCount] = useState(0);
+    const [commandString, setCommandString] = useState<string>('')
     const [mode, setMode] = useState("brief")
     const [action, setAction] = useState("")
+    const [csv, setCSV] = useState<Array<Array<string>>>([])
+
+    const hashmap = new Map<string, Array<Array<string>>>();
+    hashmap.set("mock/src/data/BadCSV.ts", BadCSV)
+    hashmap.set("mock/src/data/BasicHeaderCSV.ts", BasicHeaderCSV)
+    hashmap.set("mock/src/data/BasicNoHeaderCSV.ts", BasicNoHeaderCSV)
+    hashmap.set("mock/src/data/EmptyCSV.ts", EmptyCSV)
     
     function handleSubmit(commandString: string) {
-      setCount(count + 1)
       if (mode === "brief") {
         props.setHistory([...props.history, evaluteCommand(commandString)])
       }
@@ -31,7 +40,7 @@ export function REPLInput(props : REPLInputProps) {
       }
     }
 
-    function evaluteCommand(commandString: string): string {
+    async function evaluteCommand(commandString: string): string {
       if (commandString === "brief mode") {
         setMode("brief")
         return "mode set to brief"
@@ -40,8 +49,8 @@ export function REPLInput(props : REPLInputProps) {
         return "mode set to verbose"
       } else if (commandString.substring(0, 9) === ("load_file")) {
         setAction("load_file")
-        if (commandString.substring(10, commandString.length))
-        return "loaded file"
+        var file_path =commandString.substring(10, commandString.length)
+        if (fileMap[file_path])
       } else {
         return "unknown command"
       }
