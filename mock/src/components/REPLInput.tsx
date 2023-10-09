@@ -40,6 +40,7 @@ export function REPLInput(props : REPLInputProps) {
         return "mode set to verbose"
       } else if (commandString.substring(0, 9) === ("load_file")) {
         setAction("load_file")
+        if (commandString.substring(10, commandString.length))
         return "loaded file"
       } else {
         return "unknown command"
