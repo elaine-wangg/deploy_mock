@@ -1,3 +1,3 @@
-const EmptyCSV = [[]];
+var EmptyCSV = [[]];
 
 export default EmptyCSV;

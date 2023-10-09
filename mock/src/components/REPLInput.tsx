@@ -19,11 +19,11 @@ export function REPLInput(props : REPLInputProps) {
     const [action, setAction] = useState("")
     const [csv, setCSV] = useState<Array<Array<string>>>([])
 
-    const hashmap = new Map<string, Array<Array<string>>>();
-    hashmap.set("mock/src/data/BadCSV.ts", BadCSV)
-    hashmap.set("mock/src/data/BasicHeaderCSV.ts", BasicHeaderCSV)
-    hashmap.set("mock/src/data/BasicNoHeaderCSV.ts", BasicNoHeaderCSV)
-    hashmap.set("mock/src/data/EmptyCSV.ts", EmptyCSV)
+    const fileMap = new Map<string, Array<Array<string>>>();
+    fileMap.set("mock/src/data/BadCSV.ts", BadCSV)
+    fileMap.set("mock/src/data/BasicHeaderCSV.ts", BasicHeaderCSV)
+    fileMap.set("mock/src/data/BasicNoHeaderCSV.ts", BasicNoHeaderCSV)
+    fileMap.set("mock/src/data/EmptyCSV.ts", EmptyCSV)
     
     function handleSubmit(commandString: string) {
       if (mode === "brief") {
@@ -50,7 +50,7 @@ export function REPLInput(props : REPLInputProps) {
       } else if (commandString.substring(0, 9) === ("load_file")) {
         setAction("load_file")
         var file_path =commandString.substring(10, commandString.length)
-        if (fileMap[file_path])
+        //if (fileMap[file_path])
       } else {
         return "unknown command"
       }
