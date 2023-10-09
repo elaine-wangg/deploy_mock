@@ -21,9 +21,9 @@ export function REPLInput(props : REPLInputProps) {
         props.setHistory([...props.history, evaluteCommand(commandString)])
       }
       if (mode === "verbose") {
-        var command = "Command: " + commandString
+        var command = "Command: " + commandString + ", "
         var output = "Output: " + evaluteCommand(commandString)  
-        props.setHistory([...props.history, command, output])
+        props.setHistory([...props.history, command + output])
       }
       setCommandString('')
       if (action === "load_file") {
