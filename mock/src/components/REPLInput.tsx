@@ -17,7 +17,7 @@ export function REPLInput(props : REPLInputProps) {
     const [commandString, setCommandString] = useState<string>('')
     const [mode, setMode] = useState("brief")
     const [action, setAction] = useState("")
-    const [csv, setCSV] = useState<Array<Array<string>>>([])
+    const [csv, setCSV] = useState<Array<Array<string>>>()
 
     const fileMap = new Map<string, Array<Array<string>>>();
     fileMap.set("mock/src/data/BadCSV.ts", BadCSV)
@@ -25,32 +25,52 @@ export function REPLInput(props : REPLInputProps) {
     fileMap.set("mock/src/data/BasicNoHeaderCSV.ts", BasicNoHeaderCSV)
     fileMap.set("mock/src/data/EmptyCSV.ts", EmptyCSV)
     
-    function handleSubmit(commandString: string) {
+    function handleMode(commandString: string) {
       if (mode === "brief") {
+        //handleAction(commandString)
         props.setHistory([...props.history, evaluteCommand(commandString)])
       }
       if (mode === "verbose") {
         var command = "Command: " + commandString + ", "
-        var output = "Output: " + evaluteCommand(commandString)  
+        var output = "Output: " + evaluteCommand(commandString)
+        // TODO: must be on separate lines !! 
+        //handleAction(commandString)
         props.setHistory([...props.history, command + output])
       }
-      setCommandString('')
-      if (action === "load_file") {
-        
-      }
+      setCommandString("");
     }
 
-    async function evaluteCommand(commandString: string): string {
-      if (commandString === "brief mode") {
+    // function handleAction(commandString: string){
+    //   if (action === "load_file") {
+    //     props.setHistory([...props.history, evaluteCommand(commandString)]);
+    //   }
+    //   if (action === "view_file") {
+    //     props.setHistory([...props.history, evaluteCommand(commandString)]);
+    //   }
+    // }
+
+    function evaluteCommand(commandString: string): string {
+      if (commandString === "mode brief") {
         setMode("brief")
         return "mode set to brief"
-      } else if (commandString === "verbose mode") {
+      } else if (commandString === "mode verbose") {
         setMode("verbose")
         return "mode set to verbose"
       } else if (commandString.substring(0, 9) === ("load_file")) {
         setAction("load_file")
-        var file_path =commandString.substring(10, commandString.length)
-        //if (fileMap[file_path])
+        var file_path = commandString.substring(10, commandString.length)
+        if (fileMap.has(file_path)){
+          setCSV(fileMap.get(file_path));
+          return "successfully loaded file: " + file_path
+        }
+        return "failure to load file: " + file_path
+      } else if (commandString === ("view")) {
+        setAction("view")
+        if (csv){
+          // TODO: csv must be in a table format
+          return "file: " + csv 
+        }
+        return "failure to view file"
       } else {
         return "unknown command"
       }
@@ -71,7 +91,7 @@ export function REPLInput(props : REPLInputProps) {
             </fieldset>
             {/* TODO WITH TA: Build a handleSubmit function that increments count and displays the text in the button */}
             {/* TODO: Currently this button just counts up, can we make it push the contents of the input box to the history?*/}
-            <button onClick={() => handleSubmit(commandString)}>Submit</button>
+            <button onClick={() => handleMode(commandString)}>Submit</button>
         </div>
     );
   }
