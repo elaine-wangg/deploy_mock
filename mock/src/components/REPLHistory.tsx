@@ -6,35 +6,40 @@ interface REPLHistoryProps{
 
 function checkForBrief(input: string[]) {
     if (input[0] === "brief") {
-        if (input[2] === "mode set to verbose" || input[1].substring(0, 9) === "load_file") {
+        if (input[1] === "view") {
+            let csv = JSON.parse(input[2])
             return (
-                <p>{input[2]}</p>
-            );
-        } else if (input[1] === "view") {
-            let csv = JSON.parse(input[2].substring(8,))
-            return (
-                <table>
+                <table className="border">
                     {csv.map((row: string[]) => createTableRow(row))}
                 </table>
             )
+        } else {
+            return (
+                <p>Output: {input[2]}</p>
+            );
         }
     } else {
-        if (input[1] === "mode set to brief" || input[0].substring(9, 18) === "load_file") {
-            return (
-                <div>
-                    <p>{input[0]}</p>
-                    <p>{input[1]}</p>
-                </div>)
-        } else if (input[0].substring(9, 12) === "view") {
+        if (input[0] === "view") {
             let csv = JSON.parse(input[1])
             return (
                 <div>
-                    <p>{input[0]}</p>
-                    <table>
-                        {csv.map((row: string[]) => createTableRow(row))}
-                    </table>
+                    <div>
+                        <p>Command: {input[0]}</p>
+                        <p>Output:</p>
+                    </div>
+                    <div className="repl-history">
+                        <table className="border">
+                            {csv.map((row: string[]) => createTableRow(row))}
+                        </table>
+                    </div>
                 </div>
             )
+        } else {
+            return (
+                <div>
+                    <p>Command: {input[0]}</p>
+                    <p>Output: {input[1]}</p>
+                </div>)
         }
     }
 }
@@ -42,7 +47,7 @@ function checkForBrief(input: string[]) {
 function createTableRow(row: string[]) {
     return (
         <tr>
-            {row.map((item) => <td>{item}</td>)}
+            {row.map((item) => <td className="border">{item}</td>)}
         </tr>
     )
 }
