@@ -7,7 +7,9 @@
     height:55vh;
     margin: auto;
     display: block;
-    overflow: scroll;  
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
 }
 
 .repl-input {        
@@ -20,6 +22,11 @@
     margin: auto;
     display: block;
 }
+
+.border {
+    border: 1px solid;
+}
+
 button{
     margin: auto;
     display: block;

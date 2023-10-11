@@ -10,14 +10,12 @@ interface REPLInputProps{
   history: string[][],
   setHistory: Dispatch<SetStateAction<string[][]>>
 }
-// You can use a custom interface or explicit fields or both! An alternative to the current function header might be:
-// REPLInput(history: string[], setHistory: Dispatch<SetStateAction<string[]>>)
+
 export function REPLInput(props : REPLInputProps) {
 
     const [commandString, setCommandString] = useState<string>('')
     const [mode, setMode] = useState("brief")
     const [csv, setCSV] = useState<Array<Array<string>>>()
-    const [action, setAction] = useState<string>('')
     const [column, setColumn] = useState("")
     const [value, setValue] = useState("")
     const [header, setHeader] = useState("")
@@ -31,13 +29,12 @@ export function REPLInput(props : REPLInputProps) {
     fileMap.set("mock/src/data/EmptyCSV.ts", EmptyCSV)
     
     function handleMode(commandString: string) {
-      let output = "Output: " + evaluateCommand(commandString)
+      let output = evaluateCommand(commandString)
       if (mode === "brief") {
         props.setHistory([...props.history, ["brief", commandString, output]])
       }
       if (mode === "verbose") {
-        var command = "Command: " + commandString
-        props.setHistory([...props.history, [command, output]])
+        props.setHistory([...props.history, [commandString, output]])
       }
       setCommandString("");
     }
