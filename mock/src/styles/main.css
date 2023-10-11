@@ -23,6 +23,7 @@
 .repl-input {        
     margin: auto;    
     height:10vh;
+    white-space: pre;
 }
 .repl-command-box {
     width: 90%;            

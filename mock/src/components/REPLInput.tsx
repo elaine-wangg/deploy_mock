@@ -35,7 +35,7 @@ export function REPLInput(props : REPLInputProps) {
         var output = "Output: " + evaluteCommand(commandString)
         // TODO: must be on separate lines !! 
         //handleAction(commandString)
-        props.setHistory([...props.history, command + output])
+        props.setHistory([...props.history, command +  <br /> + output])
       }
       setCommandString("");
     }
