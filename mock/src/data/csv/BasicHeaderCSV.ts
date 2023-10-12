@@ -1,4 +1,4 @@
-var BasicHeaderCSV = [
+const BasicHeaderCSV = [
   [
     "State",
     "Data Type",

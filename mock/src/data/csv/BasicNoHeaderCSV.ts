@@ -1,4 +1,4 @@
-var BasicNoHeaderCSV = [
+const BasicNoHeaderCSV = [
   ["0", "Sol", "0", "0", "0"],
   ["1", "", "282.43485", "0.00449", "5.36884"],
   ["2", "", "43.04329", "0.00285", "-15.24144"],
@@ -11,4 +11,4 @@ var BasicNoHeaderCSV = [
   ["118721", "", "-2.28262", "0.64697", "0.29354"],
 ];
 
-export default BasicNoHeaderCSV
+export default BasicNoHeaderCSV;
