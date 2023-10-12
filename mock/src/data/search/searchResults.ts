@@ -3,23 +3,23 @@ import BasicHeaderCSV from "../csv/BasicHeaderCSV";
 import BasicNoHeaderCSV from "../csv/BasicNoHeaderCSV";
 import EmptyCSV from "../csv/EmptyCSV";
 
-const searchResults = new Map<string[], string[][]>();
+const searchResults = new Map<string, Array<Array<string>>>();
 
 searchResults.set(
-  ["Data Type", "White", "true"],
+  "Data Type White true",
   [["RI", "White", "$1,058.47", "395773.6521", "$1.00", "75%"]]
 );
 
 searchResults.set(
-  ["1", "White", "true"],
+  "1 White true",
   [["RI", "White", "$1,058.47", "395773.6521", "$1.00", "75%"]]
 );
 
 searchResults.set(
-  ["", "White", "true"],
+  "White true",
   [["RI", "White", "$1,058.47", "395773.6521", "$1.00", "75%"]]
 );
 
-searchResults.set(["State", "RI", "true"], BasicHeaderCSV);
+searchResults.set("State RI true", BasicHeaderCSV);
 
 export default searchResults;
