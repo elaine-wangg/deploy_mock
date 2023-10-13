@@ -6,7 +6,7 @@ interface REPLHistoryProps{
 
 function checkForBrief(input: string[]) {
     if (input[0] === "brief") {
-        if (input[1] === "view" || input[1].substring(0, 6) === "search") {
+        if ((input[1] === "view" || input[1].substring(0, 6) === "search") && (input[2] !== "failure to view file" && input[2] !== "failure to search")) {
             let csv = JSON.parse(input[2])
             return (
                 <table className="border">
