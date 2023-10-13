@@ -60,6 +60,11 @@ Included in this program are three major packages: components, data, and styles.
 ### Components 
 Components serve and provides the back-end the communication between the client and the server. Functions as the controller to process user inputs and provide user outputs.
 
+#### <ins>App</ins>  
+This function serves as the highest level component. 
+
+**Description:** Loads a CSV file if one is located at the specified path, where no more than one CSV file should be loaded at a time. Status of loading is communicated with front-end user through detail displays of a success message or specified error message. 
+
 #### <ins>Load</ins>  
 
 **Description:** Loads a CSV file if one is located at the specified path, where no more than one CSV file should be loaded at a time. Status of loading is communicated with front-end user through detail displays of a success message or specified error message. 
@@ -78,7 +83,6 @@ Search include the ability to:
 * Search by column index &rarr; input column index.
 * Search by column header &rarr; input column name. 
 * Search across all columns &rarr; input blank.
-
 
 #### <ins>REPL</ins>
 
@@ -111,7 +115,6 @@ NOTE: for tests that are named `testBeforeLoad()` in the Search and View test su
 `Load.spec.ts` incorporates 5 Integration tests:
 * Testing basic functionality with an existing CSV file.
 * Testing basic functionality with an empty CSV file.
-* Testing malformed request parameters.
 * Testing a file that does not exist or cannot be opened.
 * Testing a file that contains variable number of columns. 
 
@@ -128,11 +131,12 @@ NOTE: for tests that are named `testBeforeLoad()` in the Search and View test su
 * Testing a search term that does not have a column identifier. 
 * Testing a search term that has incorrect column identifier. 
 * Testing a search term that does not exist. 
-* Testing malformed request parameters.
 * Testing before `load_file` is processed.
 
 ### App
 `App.spec.ts` incorporates _ Integration tests: 
+* Testing brief mode
+* Testing verbose mode
 * Testing the visual view of an input bar. 
 * Testing the commands inputted into the input box. 
 * Testing the visual view of a button. 
