@@ -22,4 +22,10 @@ searchResults.set(
 
 searchResults.set("State RI true", BasicHeaderCSV);
 
+searchResults.set("RI true", BasicHeaderCSV);
+
+searchResults.set("", EmptyCSV);
+
+searchResults.set("1 Proxima Centauri false", BasicNoHeaderCSV)
+
 export default searchResults;

@@ -54,7 +54,7 @@ function createTableRow(row: string[]) {
 
 export function REPLHistory(props : REPLHistoryProps) {
     return (
-        <div className="repl-history">
+        <div className="repl-history" aria-label='output'>
             {props.history.map((history) => checkForBrief(history))}           
         </div>
     );
