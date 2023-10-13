@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom/client';
 import './styles/index.css';
 import App from './components/App';
 
-// Tim removed some boilerplate to keep things simple.
-// We're using an older version of React here. 
-
+/**
+ * This sets up the React portion of the front-end.
+ */
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
