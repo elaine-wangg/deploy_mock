@@ -2,7 +2,7 @@ import '../styles/App.css';
 import REPL from './REPL';
 
 /**
- * This is the highest level component!
+ * This function serves as the highest level component.
  */
 function App() {
   return (
@@ -15,4 +15,4 @@ function App() {
   );
 }
 
-export default App;
+export default App; // exporting the function

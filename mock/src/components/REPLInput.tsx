@@ -5,16 +5,28 @@ import load_file from "./load/load";
 import view from "./view/view";
 import search from "./search/search";
 
+/**
+ * This sets up the props for this file.
+ */
 interface REPLInputProps {
   history: string[][];
   setHistory: Dispatch<SetStateAction<string[][]>>;
 }
 
+/**
+ * This function returns the input area for REPL and redirects data to other classes for further functionality.
+ * @param props 
+ * @returns 
+ */
 export function REPLInput(props: REPLInputProps) {
   const [commandString, setCommandString] = useState<string>("");
   const [mode, setMode] = useState("brief");
   const [csv, setCSV] = useState("");
 
+  /**
+   * This function handles being in different modes.
+   * @param commandString 
+   */
   function handleMode(commandString: string) {
     let output = evaluateCommand(commandString);
     if (mode === "brief") {
@@ -25,6 +37,11 @@ export function REPLInput(props: REPLInputProps) {
     setCommandString("");
   }
 
+  /**
+   * This function produces a string for the output for a given command.
+   * @param commandString 
+   * @returns 
+   */
   function evaluateCommand(commandString: string): string {
     if (commandString === "mode brief") {
       setMode("brief")
@@ -39,13 +56,16 @@ export function REPLInput(props: REPLInputProps) {
       return load_result[0]
     } else if (commandString === "view") {
       return view(csv)
-    } else if (commandString.substring(0, 15) === "search column =") {
+    } else if (commandString.substring(0, 6) === "search") {
       return search(csv, commandString)
     } else {
       return "unknown command"
     }
   }
 
+  /**
+   * This returns the front-end input box for entering a command.
+   */
   return (
     <div className="repl-input">
       <fieldset>

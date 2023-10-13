@@ -45,16 +45,17 @@ Users of our webapp, can search through for a specific value with an option to e
 * Open program using VSCode.
 * `cd mock` to enter the mock directory and run `npm install` to configure settings and import relevant packages. 
 * Run `npm start` to start the local host on the internet.
+* Run `npx playwright test` to verify tests. 
 * When running test please check your local specific filepath.
 
 ### Executing program
 
 * For front-end users, run server method located [here.](https://github.com/cs0320-f23/mock-eswhang-ewang111/tree/main/mock/src)
-* For developers, run test files located [here.](https://github.com/cs0320-f23/mock-eswhang-ewang111/tree/main/mock/test)
+* For developers, run test files located [here.](https://github.com/cs0320-f23/mock-eswhang-ewang111/tree/main/mock/tests)
 
 ## Design Choices
 
-Included in this program are three major packages: components, data, and styles. Note that these exceptions will be thrown after the completion of integration of java backend but we will mock these exceptions. 
+Included in this program are three major packages: components, data, and styles.
 
 ### Components 
 Components serve and provides the back-end the communication between the client and the server. Functions as the controller to process user inputs and provide user outputs.
@@ -63,18 +64,10 @@ Components serve and provides the back-end the communication between the client 
 
 **Description:** Loads a CSV file if one is located at the specified path, where no more than one CSV file should be loaded at a time. Status of loading is communicated with front-end user through detail displays of a success message or specified error message. 
 
-**Exceptions:** 
-* `IOException` thrown when file does not exist or cannot be opened.
-* `FactoryFailureException` thrown when file contains a variable number of columns. 
-* `Exception` thrown when an improper query parameter is inserted. 
-
 #### <ins>View</ins>
 
 **Description:** Sends back the entire CSV file's contents as a Json 2-dimensional array. In order view CSV file, `load_file` + `<csv-file-path>` must be called before.
 Status of loading is communicated with front-end user through detail displays of a success message or specified error message.
-
-**Exceptions:**
-* `Exception` thrown when this handler is run before `load_file` command.
 
 #### <ins>Search</ins>
 
@@ -86,9 +79,6 @@ Search include the ability to:
 * Search by column header &rarr; input column name. 
 * Search across all columns &rarr; input blank.
 
-**Exceptions:**
-* `Exception` thrown when this handler is run before `load_file` command.
-* `Exception` thrown when parameter is not correctly implemented.
 
 #### <ins>REPL</ins>
 

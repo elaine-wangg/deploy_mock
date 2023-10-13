@@ -1,3 +1,6 @@
+/**
+ * This is a basic CSV with a header.
+ */
 const BasicHeaderCSV = [
   [
     "State",
