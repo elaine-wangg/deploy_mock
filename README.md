@@ -44,7 +44,7 @@ Users of our webapp, can search through for a specific value with an option to e
 ### Installing
 * Open program using VSCode.
 * `cd mock` to enter the mock directory and run `npm install` to configure settings and import relevant packages. 
-* Run `npm start` to start the local host.
+* Run `npm start` to start the local host on the internet.
 * When running test please check your local specific filepath.
 
 ### Executing program
@@ -103,10 +103,10 @@ Search include the ability to:
 **Description:** Is the integration of all functionality from various classes to ensure that information is relayed from `controlledinput.tsx` to its corresponding action. 
 
 ### Data
-Our mock data Records are [TODO]
+Our mock data are sets of dummy data or test data that is created for testing and development purposes. It is not real or actual data but is generated to simulate the structure and behavior of real data. This allows and enables integration testing so that different parts of a software system need to be tested together to ensure they work seamlessly, mock data is used to simulate the interaction between these components.
 
 ### Styles 
-[TODO]
+Through the main.css file, developers can apply the default styles to your entire project. For individual components, developers can create dedicated CSS files in their components' directories. Furthermore, our styles include responsive design elements, making it easy to create web applications that adapt to various screen sizes. This packaging allows for the creation of CSS files to customize specific aspects of the styles, such as colors or typography.
 
 ## Errors and Bugs
 Regex in parser class is not implemented perfectly resulting in weird formatting and extra spaces in parsed CSV file.
@@ -115,10 +115,10 @@ quotations resulting in a json file with backslashes.
 
 ## Tests
 Included in this program are five classes that will be tested: Load, View, and Search.
-NOTE: for tests that are named `testHandleBeforeLoad()` in the Searcher and Viewer Handler test suite, these must be run alone and not as a suite for them to pass.
+NOTE: for tests that are named `testBeforeLoad()` in the Search and View test suite, these must be run alone and not as a suite for them to pass.
 
 ### Load
-`TestLoad` incorporates 5 JUnit tests:
+`Load.spec.ts` incorporates 5 Integration tests:
 * Testing basic functionality with an existing CSV file.
 * Testing basic functionality with an empty CSV file.
 * Testing malformed request parameters.
@@ -126,13 +126,13 @@ NOTE: for tests that are named `testHandleBeforeLoad()` in the Searcher and View
 * Testing a file that contains variable number of columns. 
 
 ### View
-`TestView` incorporates 3 JUnit tests:
+`View.spec.ts` incorporates 3 Integration tests:
 * Testing basic functionality with an existing CSV file.
 * Testing basic functionality with an empty CSV file.
 * Testing before `load_file` is processed.
 
 ### Search
-`TestSearch` incorporates 7 JUnit tests:
+`View.spec.ts` incorporates 7 Integration tests:
 * Testing basic functionality of a search term with existing column identifier with a CSV file that has a header.
 * Testing basic functionality of a search term with existing column identifier with a CSV file that does not have a header.
 * Testing a search term that does not have a column identifier. 
@@ -140,6 +140,13 @@ NOTE: for tests that are named `testHandleBeforeLoad()` in the Searcher and View
 * Testing a search term that does not exist. 
 * Testing malformed request parameters.
 * Testing before `load_file` is processed.
+
+### App
+`App.spec.ts` incorporates _ Integration tests: 
+* Testing the visual view of an input bar. 
+* Testing the commands inputted into the input box. 
+* Testing the visual view of a button. 
+* Testing the clicking of the button. 
 
 ## Version History
 * 0.2
