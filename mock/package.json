@@ -1,6 +1,7 @@
 {
   "name": "mock",
   "version": "1.0.0",
+  "homepage": "https://elaine-wangg.github.io/deploy_mock",
   "description": "",
   "main": "index.js",
   "directories": {
