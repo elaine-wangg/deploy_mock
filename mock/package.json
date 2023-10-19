@@ -170,6 +170,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run deploy",
+    "deploy": "deploy_mock -d build",
     "start": "vite",
     "build": "vite build",
     "serve": "vite preview"
